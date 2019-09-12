@@ -54,8 +54,9 @@ while index<index_max:
 
     index+=1
 
-print first_white
-print second_white
+average_white = int((first_white+second_white)/2)
+
+print average_white
 
 
 cv2.imwrite("output.jpg", edged)
