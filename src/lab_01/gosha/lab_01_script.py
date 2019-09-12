@@ -6,28 +6,27 @@ Kernel_size=15
 low_threshold=40
 high_threshold=80
 
-rho=10
-threshold=10
-theta=np.pi/180
-minLineLength=10
-maxLineGap=1
-
+#Source of video
 vidcap = cv2.VideoCapture('raw_video_feed.mp4')
+
+#get first frame loaded up
 success,image = vidcap.read()
+# frame count itterator setup
 count = 0
 success = True
 while success:
-    cv2.imwrite("frame.jpg", image)
-
-    frame = image
     #Convert to Grayscale
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
     #Blur image to reduce noise. if Kernel_size is bigger the image will be more blurry
     blurred = cv2.GaussianBlur(gray, (Kernel_size, Kernel_size), 0)
 
+    #debug to find size of image
     # print blurred.shape
 
+    # crop down to last few slices (actually not needed)
     crop_img = blurred[200:240, 0:320]
+
     # cv2.imshow("cropped", crop_img)
     # cv2.waitKey(0)
 
@@ -41,13 +40,13 @@ while success:
     # cv2.imshow("cropped", edged)
     # cv2.waitKey(0)
 
-    # print edged.shape
-
-    # TODO: find white 1 then 2 then average theur x pos
-    # Black is 0 white is 1
+    # Note Black is 0 white is 1
+    # Find first and second occurance of contour plot on second to
+    # last row of pixel (approximation of real path)
     first_white = 0
     second_white = 0
 
+    #due to image size
     index_max = 320
     index = 0
 
@@ -64,17 +63,16 @@ while success:
 
     average_white = int((first_white+second_white)/2)
 
-    print average_white
+    # print average_white
 
-    cv2.circle(frame,(average_white,210),20,(0,0,255),1)
+    # Now draw circle showing the center location of our contour line
+    cv2.circle(image,(average_white,210),20,(0,0,255),1)
 
-
-    cv2.imshow("cropped", frame)
+    # run the slideshow at a min wait of 1 ms
+    cv2.imshow("cropped", image)
     cv2.waitKey(1)
 
-
-    cv2.imwrite("output.jpg", edged)
-
+    #reset image for next frame 
     success,image = vidcap.read()
 
     count += 1
