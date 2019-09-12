@@ -3,10 +3,10 @@ import numpy as np
 
 Kernel_size=15
 low_threshold=40
-high_threshold=120
+high_threshold=80
 
 rho=10
-threshold=15
+threshold=10
 theta=np.pi/180
 minLineLength=10
 maxLineGap=1
@@ -19,7 +19,7 @@ blurred = cv2.GaussianBlur(gray, (Kernel_size, Kernel_size), 0)
 
 print blurred.shape
 
-crop_img = blurred[140:240, 0:320]
+crop_img = blurred[200:240, 0:320]
 cv2.imshow("cropped", crop_img)
 cv2.waitKey(0)
 
@@ -28,8 +28,15 @@ cv2.waitKey(0)
 #if a pixel gradient is lower than low_threshold is is rejected , it is not an edge.
 #Bigger high_threshold values will provoque to find less edges.
 #Canny recommended ratio upper:lower  between 2:1 or 3:1
-# edged = cv2.Canny(blurred, low_threshold, high_threshold)
+edged = cv2.Canny(crop_img, low_threshold, high_threshold)
 
+cv2.imshow("cropped", edged)
+cv2.waitKey(0)
+
+lines = cv2.HoughLinesP(edged,rho,theta,threshold,minLineLength,maxLineGap)
+
+cv2.imshow("cropped", lines)
+cv2.waitKey(0)
 
 
 cv2.imwrite("output.jpg", lines)
