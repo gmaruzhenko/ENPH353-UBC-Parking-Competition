@@ -19,7 +19,7 @@ blurred = cv2.GaussianBlur(gray, (Kernel_size, Kernel_size), 0)
 
 print blurred.shape
 
-crop_img = blurred[220:320, 0:320]
+crop_img = blurred[140:240, 0:320]
 cv2.imshow("cropped", crop_img)
 cv2.waitKey(0)
 
