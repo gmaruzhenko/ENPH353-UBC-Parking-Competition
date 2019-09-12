@@ -20,8 +20,8 @@ blurred = cv2.GaussianBlur(gray, (Kernel_size, Kernel_size), 0)
 print blurred.shape
 
 crop_img = blurred[200:240, 0:320]
-cv2.imshow("cropped", crop_img)
-cv2.waitKey(0)
+# cv2.imshow("cropped", crop_img)
+# cv2.waitKey(0)
 
 #Perform canny edge-detection.
 #If a pixel gradient is higher than high_threshold is considered as an edge.
@@ -30,16 +30,35 @@ cv2.waitKey(0)
 #Canny recommended ratio upper:lower  between 2:1 or 3:1
 edged = cv2.Canny(crop_img, low_threshold, high_threshold)
 
-cv2.imshow("cropped", edged)
-cv2.waitKey(0)
+# cv2.imshow("cropped", edged)
+# cv2.waitKey(0)
 
-lines = cv2.HoughLinesP(edged,rho,theta,threshold,minLineLength,maxLineGap)
+# print edged.shape
 
-cv2.imshow("cropped", lines)
-cv2.waitKey(0)
+# TODO: find white 1 then 2 then average theur x pos
+# Black is 0 white is 1
+first_white = 0
+second_white = 0
+
+index_max = 320
+index = 0
+
+while index<index_max:
+
+    if edged[39,index] > 0:
+        if first_white == 0:
+            first_white = index
+        else:
+            second_white = index
+    
+
+    index+=1
+
+print first_white
+print second_white
 
 
-cv2.imwrite("output.jpg", lines)
+cv2.imwrite("output.jpg", edged)
 
 
 
