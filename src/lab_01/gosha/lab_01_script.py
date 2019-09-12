@@ -58,6 +58,12 @@ average_white = int((first_white+second_white)/2)
 
 print average_white
 
+cv2.circle(frame,(average_white,210),20,(0,0,255),1)
+
+
+cv2.imshow("cropped", frame)
+cv2.waitKey(0)
+
 
 cv2.imwrite("output.jpg", edged)
 
