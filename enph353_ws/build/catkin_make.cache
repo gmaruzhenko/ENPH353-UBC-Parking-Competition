@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/devel -DCMAKE_INSTALL_PREFIX=/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/install -G Unix Makefiles
