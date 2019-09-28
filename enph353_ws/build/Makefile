@@ -284,6 +284,7 @@ gtest/fast:
 	$(MAKE) -f gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
+<<<<<<< HEAD
 #=============================================================================
 # Target rules for targets named _catkin_empty_exported_target
 
@@ -1649,6 +1650,8 @@ enph353_gazebo_generate_messages/fast:
 	$(MAKE) -f enph353_2019F_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/build.make enph353_2019F_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/build
 .PHONY : enph353_gazebo_generate_messages/fast
 
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1671,6 +1674,7 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
+<<<<<<< HEAD
 	@echo "... _catkin_empty_exported_target"
 	@echo "... enph353_utils_genpy"
 	@echo "... enph353_utils_gennodejs"
@@ -1776,6 +1780,8 @@ help:
 	@echo "... _enph353_gazebo_generate_messages_check_deps_GetLegalPlates"
 	@echo "... trajectory_msgs_generate_messages_lisp"
 	@echo "... enph353_gazebo_generate_messages"
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 .PHONY : help
 
 

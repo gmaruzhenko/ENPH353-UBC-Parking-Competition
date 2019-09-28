@@ -8,7 +8,10 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/devel:$CMAKE_PREFIX_PATH"
+<<<<<<< HEAD
 export LD_LIBRARY_PATH="/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/devel/lib:$LD_LIBRARY_PATH"
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 export PWD="/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/devel/share/common-lisp"
 export ROS_PACKAGE_PATH="/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/src:$ROS_PACKAGE_PATH"

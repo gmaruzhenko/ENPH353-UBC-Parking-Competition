@@ -35,6 +35,7 @@
 /home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/gtest/googlemock/gtest/CMakeFiles/list_install_components.dir
 /home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/gtest/googlemock/gtest/CMakeFiles/gtest.dir
 /home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/gtest/googlemock/gtest/CMakeFiles/rebuild_cache.dir
+<<<<<<< HEAD
 /home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/enph353_2019F_competition/adeept_awr/adeept_awr/CMakeFiles/install/strip.dir
 /home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/enph353_2019F_competition/adeept_awr/adeept_awr/CMakeFiles/install/local.dir
 /home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/enph353_2019F_competition/adeept_awr/adeept_awr/CMakeFiles/test.dir
@@ -196,3 +197,5 @@
 /home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/enph353_2019F_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir
 /home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/enph353_2019F_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir
 /home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/enph353_2019F_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e

@@ -14,6 +14,7 @@
 # EXTERNAL cache entries
 ########################
 
+<<<<<<< HEAD
 //Path to a library.
 AVCODEC_LIBRARY_avcodec:FILEPATH=/usr/lib/x86_64-linux-gnu/libavcodec.so
 
@@ -29,6 +30,8 @@ AVUTIL_LIBRARY_avutil:FILEPATH=/usr/lib/x86_64-linux-gnu/libavutil.so
 //The threading library used by boost-thread
 BOOST_THREAD_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libpthread.so
 
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 //Builds the googlemock subproject
 BUILD_GMOCK:BOOL=ON
 
@@ -38,6 +41,7 @@ BUILD_GTEST:BOOL=OFF
 //Build shared libraries (DLLs).
 BUILD_SHARED_LIBS:BOOL=ON
 
+<<<<<<< HEAD
 //Boost atomic library (debug)
 Boost_ATOMIC_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_atomic.so
 
@@ -110,6 +114,8 @@ Boost_THREAD_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_thread.so
 //Boost thread library (release)
 Boost_THREAD_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_thread.so
 
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 //List of ';' separated packages to exclude
 CATKIN_BLACKLIST_PACKAGES:STRING=
 
@@ -296,6 +302,7 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+<<<<<<< HEAD
 //Path to a file.
 CPPZMQ_INCLUDE_DIRS:PATH=/usr/include
 
@@ -311,6 +318,8 @@ DL_INCLUDE_DIRS:PATH=/usr/include
 //Path to a library.
 DL_LIBRARIES:FILEPATH=/usr/lib/x86_64-linux-gnu/libdl.so
 
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 //Path to a program.
 DOXYGEN_EXECUTABLE:FILEPATH=DOXYGEN_EXECUTABLE-NOTFOUND
 
@@ -320,12 +329,15 @@ EMPY_EXECUTABLE:FILEPATH=/usr/bin/empy
 //Empy script
 EMPY_SCRIPT:STRING=/usr/bin/empy
 
+<<<<<<< HEAD
 //Path to a file.
 FreeImage_INCLUDE_DIRS:PATH=/usr/include
 
 //Path to a library.
 FreeImage_LIBRARIES:FILEPATH=/usr/lib/x86_64-linux-gnu/libfreeimage.so
 
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 //The directory containing a CMake configuration file for GMock.
 GMock_DIR:PATH=GMock_DIR-NOTFOUND
 
@@ -344,6 +356,7 @@ GTEST_MAIN_LIBRARY:FILEPATH=GTEST_MAIN_LIBRARY-NOTFOUND
 //Path to a library.
 GTEST_MAIN_LIBRARY_DEBUG:FILEPATH=GTEST_MAIN_LIBRARY_DEBUG-NOTFOUND
 
+<<<<<<< HEAD
 //Path to a library.
 GTS_LIBRARY_glib-2.0:FILEPATH=/usr/lib/x86_64-linux-gnu/libglib-2.0.so
 
@@ -362,6 +375,8 @@ GTS_LIBRARY_m:FILEPATH=/usr/lib/x86_64-linux-gnu/libm.so
 //Path to a library.
 JSONCPP_LIBRARY_jsoncpp:FILEPATH=/usr/lib/x86_64-linux-gnu/libjsoncpp.so
 
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 //lsb_release executable was found
 LSB_FOUND:BOOL=TRUE
 
@@ -371,6 +386,7 @@ LSB_RELEASE_EXECUTABLE:FILEPATH=/usr/bin/lsb_release
 //Path to a program.
 NOSETESTS:FILEPATH=/usr/bin/nosetests-2.7
 
+<<<<<<< HEAD
 //x
 OGRE_CONFIG_INCLUDE_DIR:PATH=/usr/include/OGRE
 
@@ -608,6 +624,8 @@ OGRE_Volume_LIBRARY_REL:FILEPATH=/usr/lib/x86_64-linux-gnu/libOgreVolume.so
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 //Path to a program.
 PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2
 
@@ -620,6 +638,7 @@ Project_BINARY_DIR:STATIC=/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph3
 //Value Computed by CMake
 Project_SOURCE_DIR:STATIC=/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/src
 
+<<<<<<< HEAD
 //The directory containing a CMake configuration file for Protobuf.
 Protobuf_DIR:PATH=Protobuf_DIR-NOTFOUND
 
@@ -653,12 +672,18 @@ RT_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
 //The directory containing a CMake configuration file for SDFormat.
 SDFormat_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/sdformat
 
+=======
+//Path to a library.
+RT_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
+
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 //Enable debian style python package layout
 SETUPTOOLS_DEB_LAYOUT:BOOL=ON
 
 //Name of the computer/site where compile is being run
 SITE:STRING=gosha-code
 
+<<<<<<< HEAD
 //Path to a library.
 SWSCALE_LIBRARY_swscale:FILEPATH=/usr/lib/x86_64-linux-gnu/libswscale.so
 
@@ -674,12 +699,15 @@ Simbody_STATIC_LIBRARIES:STRING=Simbody_STATIC_LIBRARIES-NOTFOUND
 //Path to a library.
 TINYXML2_LIBRARY_tinyxml2:FILEPATH=/usr/lib/x86_64-linux-gnu/libtinyxml2.so
 
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 //LSB Distrib tag
 UBUNTU:BOOL=TRUE
 
 //LSB Distrib - codename tag
 UBUNTU_BIONIC:BOOL=TRUE
 
+<<<<<<< HEAD
 //Path to a library.
 UUID_LIBRARY_uuid:FILEPATH=/usr/lib/x86_64-linux-gnu/libuuid.so
 
@@ -698,6 +726,8 @@ ZeroMQ_DIR:PATH=ZeroMQ_DIR-NOTFOUND
 //Path to a library.
 ZeroMQ_LIBRARY_zmq:FILEPATH=/usr/lib/x86_64-linux-gnu/libzmq.so
 
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 //Path to a file.
 _gmock_INCLUDES:FILEPATH=/usr/include/gmock/gmock.h
 
@@ -710,6 +740,7 @@ _gtest_INCLUDES:FILEPATH=/usr/include/gtest/gtest.h
 //Path to a file.
 _gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
 
+<<<<<<< HEAD
 //The directory containing a CMake configuration file for actionlib.
 actionlib_DIR:PATH=/opt/ros/melodic/share/actionlib/cmake
 
@@ -809,6 +840,11 @@ genpy_DIR:PATH=/opt/ros/melodic/share/genpy/cmake
 //The directory containing a CMake configuration file for geometry_msgs.
 geometry_msgs_DIR:PATH=/opt/ros/melodic/share/geometry_msgs/cmake
 
+=======
+//The directory containing a CMake configuration file for catkin.
+catkin_DIR:PATH=/opt/ros/melodic/share/catkin/cmake
+
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/gtest/googlemock
 
@@ -858,6 +894,7 @@ gtest_hide_internal_symbols:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
+<<<<<<< HEAD
 //The directory containing a CMake configuration file for ignition-cmake0.
 ignition-cmake0_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/ignition-cmake0
 
@@ -954,11 +991,14 @@ trajectory_msgs_DIR:PATH=/opt/ros/melodic/share/trajectory_msgs/cmake
 //The directory containing a CMake configuration file for xmlrpcpp.
 xmlrpcpp_DIR:PATH=/opt/ros/melodic/share/xmlrpcpp/cmake
 
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 
 ########################
 # INTERNAL cache entries
 ########################
 
+<<<<<<< HEAD
 AVCODEC_CFLAGS:INTERNAL=-I/usr/include/x86_64-linux-gnu
 AVCODEC_CFLAGS_I:INTERNAL=
 AVCODEC_CFLAGS_OTHER:INTERNAL=
@@ -1173,6 +1213,8 @@ Boost_SYSTEM_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 Boost_THREAD_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_THREAD_LIBRARY_RELEASE
 Boost_THREAD_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 //catkin environment
 CATKIN_ENV:INTERNAL=/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/catkin_generated/env_cached.sh
 CATKIN_TEST_RESULTS_DIR:INTERNAL=/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/test_results
@@ -1278,7 +1320,11 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
+<<<<<<< HEAD
 CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=12
+=======
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -1319,6 +1365,7 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+<<<<<<< HEAD
 //ADVANCED property for variable: CURL_INCLUDE_DIR
 CURL_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CURL_LIBRARY
@@ -1363,6 +1410,12 @@ FIND_PACKAGE_MESSAGE_DETAILS_ZeroMQ:INTERNAL=[true][v(4)]
 FREEIMAGE_COMPILES:INTERNAL=TRUE
 //Result of TRY_RUN
 FREEIMAGE_RUNS:INTERNAL=1
+=======
+//Details about finding PythonInterp
+FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python2][v2.7.15()]
+//Details about finding Threads
+FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 GMOCK_FROM_SOURCE_FOUND:INTERNAL=TRUE
 GMOCK_FROM_SOURCE_INCLUDE_DIRS:INTERNAL=/usr/include
 GMOCK_FROM_SOURCE_LIBRARIES:INTERNAL=gmock
@@ -1383,6 +1436,7 @@ GTEST_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 GTEST_MAIN_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GTEST_MAIN_LIBRARY_DEBUG
 GTEST_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+<<<<<<< HEAD
 GTS_CFLAGS:INTERNAL=-pthread;-I/usr/include/glib-2.0;-I/usr/lib/x86_64-linux-gnu/glib-2.0/include
 GTS_CFLAGS_I:INTERNAL=
 GTS_CFLAGS_OTHER:INTERNAL=-pthread
@@ -1643,12 +1697,15 @@ OGRE_Volume_LIBRARY_FWK-ADVANCED:INTERNAL=1
 OGRE_Volume_LIBRARY_REL-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //This needs to be in PYTHONPATH when 'setup.py install' is called.
 //  And it needs to match.  But setuptools won't tell us where
 // it will install things.
 PYTHON_INSTALL_DIR:INTERNAL=lib/python2.7/dist-packages
+<<<<<<< HEAD
 //ADVANCED property for variable: Protobuf_INCLUDE_DIR
 Protobuf_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Protobuf_LIBRARY_DEBUG
@@ -1908,4 +1965,6 @@ __pkg_config_checked_YAML:INTERNAL=1
 __pkg_config_checked_ZIP:INTERNAL=1
 __pkg_config_checked_ZeroMQ:INTERNAL=1
 prefix_result:INTERNAL=/usr/lib/x86_64-linux-gnu
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 

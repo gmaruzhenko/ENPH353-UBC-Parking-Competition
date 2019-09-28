@@ -131,6 +131,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/gtest/cmake_install.cmake")
+<<<<<<< HEAD
   include("/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/enph353_2019F_competition/adeept_awr/adeept_awr/cmake_install.cmake")
   include("/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/enph353_2019F_competition/adeept_awr/adeept_awr_description/cmake_install.cmake")
   include("/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/enph353_2019F_competition/enph353/enph353/cmake_install.cmake")
@@ -139,6 +140,8 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/enph353_2019F_competition/adeept_awr_ros_driver/cmake_install.cmake")
   include("/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/enph353_2019F_competition/adeept_awr/adeept_awr_gazebo/cmake_install.cmake")
   include("/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/build/enph353_2019F_competition/enph353/enph353_gazebo/cmake_install.cmake")
+=======
+>>>>>>> 85515411487d83897ae85e9e41ed97cc66df9c6e
 
 endif()
 
