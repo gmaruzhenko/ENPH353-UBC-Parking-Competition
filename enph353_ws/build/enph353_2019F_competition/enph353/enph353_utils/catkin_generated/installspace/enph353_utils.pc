@@ -1,8 +1,0 @@
-prefix=/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/install
-
-Name: enph353_utils
-Description: Description of enph353_utils
-Version: 0.0.2
-Cflags: 
-Libs: -L/home/gosha/Code/ENPH353-UBC-Parking-Competition/enph353_ws/install/lib 
-Requires: actionlib_msgs
