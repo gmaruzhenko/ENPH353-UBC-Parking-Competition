@@ -29,6 +29,7 @@ class image_converter:
         self.image_sub = rospy.Subscriber("/R1/pi_camera/image_raw", Image, self.callback)
 
         self.publish = rospy.Publisher("/R1/cmd_vel", Twist, queue_size=1)
+        self.drifted = False
 
     def callback(self, data):
         try:
@@ -39,47 +40,74 @@ class image_converter:
         # Gets the velocity message from the determineVelocity function
         velocity = self.determineVelocity(cv_image)
         self.publish.publish(velocity)
+        # if not self.drifted:
+        #     rospy.sleep(2100)
+        #     self.drifted = True
 
     # determineVelocity function calculate the velocity for the robot based
     # on the position of the line in the image.   
     def determineVelocity(self, image):
+        
+        # # Crop the image
+        # crop_img = image[60:120, 0:160]
+        # # Convert to grayscale
+        # gray = cv2.cvtColor(crop_img, cv2.COLOR_BGR2GRAY)
+        # # Gaussian blur
+        # blur = cv2.GaussianBlur(gray,(5,5),0)
+        # # Color thresholding
+        # ret,thresh = cv2.threshold(blur,60,255,cv2.THRESH_BINARY_INV)
+        # # Find the contours of the frame
+
+        # contours,hierarchy = cv2.findContours(thresh.copy(), 1, cv2.CHAIN_APPROX_NONE)
+
+        # cv2.imshow("cropped", contours)
+        # cv2.waitKey(3)
+        # print(hierarchy)
+        
         grayImage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        grayInverseImage = ~grayImage
+        blurred = cv2.GaussianBlur(grayImage,(9, 9), 0)
+        grayInverseImage = blurred
         bw = cv2.threshold(grayInverseImage, 147, 255, cv2.THRESH_BINARY)[1]
 
         h, w = bw.shape[0:2]  # gets dimensions of image
-
-        imageCentre = int(w/2)
+        # cv2.imshow("cropped", bw)
+        # cv2.waitKey(3)
+        imageCentre = 1222
 
         # finds where the line is on the bottom of the image
         left_x = -34  # random numbers that is supposed to be repalce with one when line is found
         right_x = -34
-        for x in range(w):
-            if (bw[h - 5, x] > 0):
-                left_x = x
+        for x in range(w-int(w/2)-1):
+            if (bw[h - 5, x+int(w/2)] > 0):
+                left_x = x+int(w/2)
                 break
 
-        for x in range(w):
+        for x in range(w-1):
             if (bw[h - 5, w-x-1] > 0):
                 right_x = w-x
                 break
 
         lineCentre = int(left_x+right_x)/2
-
+        # print(left_x , "left aaaaaaaaaaand Right" , right_x)
         lineBufferZone = 7
         straightZoneLeftBoundary = imageCentre - lineBufferZone
         straightZoneRightBoundary = imageCentre + lineBufferZone
-
+        print(lineCentre)
         velocity = Twist()
-
+         # tokyo drift to outside in begining
+        if not self.drifted:
+            velocity.linear.x = 30
+            velocity.angular.z = 10    
+        elif lineCentre < 0:
+            velocity.linear.x = 1
         # goes through different options of turning
-        if lineCentre < straightZoneLeftBoundary:
+        elif lineCentre < straightZoneLeftBoundary:
             # turn right Cop
-            velocity.linear.x = 0
+            velocity.linear.x = 0.1
             velocity.angular.z = 0.3
         elif lineCentre > straightZoneRightBoundary:
             # turn left
-            velocity.linear.x = 0
+            velocity.linear.x = 0.1
             velocity.angular.z = -0.3
         else:
             # go straight
