@@ -40,9 +40,12 @@ class image_converter:
         # Gets the velocity message from the determineVelocity function
         velocity = self.determineVelocity(cv_image)
         self.publish.publish(velocity)
-        # if not self.drifted:
-        #     rospy.sleep(2100)
-        #     self.drifted = True
+        if not self.drifted:
+            velocity = Twist()
+            velocity.linear.x = 10
+            self.publish.publish(velocity)
+            rospy.sleep(2)
+            self.drifted = True
 
     # determineVelocity function calculate the velocity for the robot based
     # on the position of the line in the image.   
@@ -99,7 +102,7 @@ class image_converter:
         
         velocity = Twist()
          # tokyo drift to outside in begining
-        if turn_sum > 800:
+        if turn_sum > 30000:
             print("hard tuning ---------------")
             velocity.linear.x = 0
             velocity.angular.z = 10    
@@ -110,17 +113,17 @@ class image_converter:
         elif lineCentre < straightZoneLeftBoundary:
             # turn right Cop
             print("turning right")
-            velocity.linear.x = 0.1
-            velocity.angular.z = 0.3
+            velocity.linear.x = 0
+            velocity.angular.z = 0.1
         elif lineCentre > straightZoneRightBoundary:
             # turn left
             print("turning Left")
-            velocity.linear.x = 0.1
-            velocity.angular.z = -0.3
+            velocity.linear.x = 0
+            velocity.angular.z = -0.1
         else:
             # go straight
             print("straight")
-            velocity.linear.x = 0.3
+            velocity.linear.x = 0.1
             velocity.angular.z = 0
         return velocity
 
