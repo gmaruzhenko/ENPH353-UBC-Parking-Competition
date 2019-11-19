@@ -74,6 +74,10 @@ class image_converter:
         # cv2.waitKey(3)
         imageCentre = 1222
 
+        turn_sum = 0 
+        for x in range(w-1):
+            turn_sum += bw[h-200, x]
+        print(turn_sum)
         # finds where the line is on the bottom of the image
         left_x = -34  # random numbers that is supposed to be repalce with one when line is found
         right_x = -34
@@ -92,25 +96,30 @@ class image_converter:
         lineBufferZone = 7
         straightZoneLeftBoundary = imageCentre - lineBufferZone
         straightZoneRightBoundary = imageCentre + lineBufferZone
-        print(lineCentre)
+        
         velocity = Twist()
          # tokyo drift to outside in begining
-        if not self.drifted:
-            velocity.linear.x = 30
+        if turn_sum > 800:
+            print("hard tuning ---------------")
+            velocity.linear.x = 0
             velocity.angular.z = 10    
         elif lineCentre < 0:
+            print("cant see shit so go stright")
             velocity.linear.x = 1
         # goes through different options of turning
         elif lineCentre < straightZoneLeftBoundary:
             # turn right Cop
+            print("turning right")
             velocity.linear.x = 0.1
             velocity.angular.z = 0.3
         elif lineCentre > straightZoneRightBoundary:
             # turn left
+            print("turning Left")
             velocity.linear.x = 0.1
             velocity.angular.z = -0.3
         else:
             # go straight
+            print("straight")
             velocity.linear.x = 0.3
             velocity.angular.z = 0
         return velocity
