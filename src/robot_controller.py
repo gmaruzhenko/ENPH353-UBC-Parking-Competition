@@ -44,7 +44,7 @@ class image_converter:
             velocity = Twist()
             velocity.linear.x = 10
             self.publish.publish(velocity)
-            rospy.sleep(2)
+            rospy.sleep(0.9)
             self.drifted = True
 
     # determineVelocity function calculate the velocity for the robot based
