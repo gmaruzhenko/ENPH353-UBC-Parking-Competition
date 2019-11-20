@@ -145,7 +145,7 @@ class image_converter:
         # print(f_lineCentre)
         # print(lineCentre,"\n--------------------")
         # print(left_x , "left aaaaaaaaaaand Right" , right_x)
-        lineBufferZone = 12*2
+        lineBufferZone = 12
         straightZoneLeftBoundary = imageCentre - lineBufferZone
         straightZoneRightBoundary = imageCentre + lineBufferZone
         distance_error = abs(imageCentre - lineCentre)/imageCentre
