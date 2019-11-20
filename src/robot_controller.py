@@ -31,6 +31,7 @@ class image_converter:
         self.publish = rospy.Publisher("/R1/cmd_vel", Twist, queue_size=1)
         self.drifted = False
         self.crosswalk = False
+        self.second_red = False
 
     def callback(self, data):
         try:
@@ -42,15 +43,28 @@ class image_converter:
         velocity = self.determineVelocity(cv_image)
         self.publish.publish(velocity)
 
+        if self.second_red:
+            velocity = Twist()
+            velocity.angular.z = 0
+            velocity.linear.x = 10
+            self.publish.publish(velocity)
+            print("CHsecond redARGE")
+            rospy.sleep(0.5)
+            self.second_red = False
+
         if self.crosswalk:
             # do safe driving
             velocity = Twist()
+            velocity.angular.z = 0
+            velocity.linear.x = 0
+            self.publish.publish(velocity)
+            rospy.sleep(4)
             velocity.angular.z = 0
             velocity.linear.x = 10
             self.publish.publish(velocity)
             print("CHARGE")
             rospy.sleep(2)
-            self.crosswalk = False
+            
 
 
         #Get the bot on the outside of circuit driving CCW
@@ -143,7 +157,15 @@ class image_converter:
             print("red detected")
             velocity.linear.x = 0
             velocity.angular.z = 0
-            self.crosswalk = True    
+            #stop driving once past second red
+            if self.crosswalk:
+                self.crosswalk = False
+                self.second_red = True
+            else:
+                self.crosswalk = True 
+        elif self.crosswalk:
+            velocity.linear.x = 10
+            velocity.angular.z = 0
         elif lineCentre < 0 or 1 < abs(f_lineCentre-lineCentre) < 7 :
             # print("cant see shit so go stright")
             velocity.linear.x = 1
