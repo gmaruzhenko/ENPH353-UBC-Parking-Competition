@@ -40,6 +40,8 @@ class image_converter:
         # Gets the velocity message from the determineVelocity function
         velocity = self.determineVelocity(cv_image)
         self.publish.publish(velocity)
+
+        #Get the bot on the outside of circuit driving CCW
         if not self.drifted:
             velocity = Twist()
             velocity.angular.z = 0
