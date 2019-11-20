@@ -133,7 +133,7 @@ class image_converter:
             velocity.linear.x = 0
             velocity.angular.z = 0
             self.crosswalk = True    
-        if lineCentre < 0 or 1 < abs(f_lineCentre-lineCentre) < 7 :
+        elif lineCentre < 0 or 1 < abs(f_lineCentre-lineCentre) < 7 :
             # print("cant see shit so go stright")
             velocity.linear.x = 1
         # goes through different options of turning
