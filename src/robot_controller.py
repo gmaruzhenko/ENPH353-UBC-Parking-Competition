@@ -74,9 +74,9 @@ class image_converter:
 
         ## Merge the mask and crop the red regions
         mask = cv2.bitwise_or(mask1, mask2)
-
-        cv2.imshow("cropped", mask)
-        cv2.waitKey(3)
+        
+        # cv2.imshow("cropped", mask)
+        # cv2.waitKey(3)
 
         
         grayImage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -89,10 +89,11 @@ class image_converter:
         # cv2.waitKey(3)
         imageCentre = 1222-30
 
-        turn_sum = 0 
+        red_sum = 0 
         for x in range(w-1):
-            turn_sum += bw[h-200, x]
+            red_sum += mask[h-100, x]
         # print(turn_sum)
+        
         # finds where the line is on the bottom of the image and slightly ahead in the image 
         left_x = -34  # random numbers that is supposed to be repalce with one when line is found
         right_x = -34
@@ -126,11 +127,12 @@ class image_converter:
         turn_multiplier = (1-distance_error)
         
         velocity = Twist()
-         # tokyo drift to outside in begining
-        # if turn_sum > 35000:
-        #     print("hard tuning ---------------")
-        #     velocity.linear.x = 0
-        #     velocity.angular.z = 10    
+    
+        if red_sum > 255*100:
+            print("red detected")
+            velocity.linear.x = 0
+            velocity.angular.z = 0
+            self.crosswalk = True    
         if lineCentre < 0 or 1 < abs(f_lineCentre-lineCentre) < 7 :
             # print("cant see shit so go stright")
             velocity.linear.x = 1
