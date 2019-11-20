@@ -127,7 +127,7 @@ class image_converter:
         turn_multiplier = (1-distance_error)
         
         velocity = Twist()
-    
+            # when confident that sideawlk red is seen via mask stop
         if red_sum > 255*100:
             print("red detected")
             velocity.linear.x = 0
