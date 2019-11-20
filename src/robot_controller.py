@@ -44,7 +44,10 @@ class image_converter:
             velocity = Twist()
             velocity.linear.x = 10
             self.publish.publish(velocity)
-            rospy.sleep(0.9)
+            rospy.sleep(.8)
+            velocity.angular.z = 10
+            self.publish.publish(velocity)
+            rospy.sleep(.5)
             self.drifted = True
 
     # determineVelocity function calculate the velocity for the robot based
@@ -96,17 +99,17 @@ class image_converter:
 
         lineCentre = int(left_x+right_x)/2
         # print(left_x , "left aaaaaaaaaaand Right" , right_x)
-        lineBufferZone = 7
+        lineBufferZone = 15
         straightZoneLeftBoundary = imageCentre - lineBufferZone
         straightZoneRightBoundary = imageCentre + lineBufferZone
         
         velocity = Twist()
          # tokyo drift to outside in begining
-        if turn_sum > 30000:
-            print("hard tuning ---------------")
-            velocity.linear.x = 0
-            velocity.angular.z = 10    
-        elif lineCentre < 0:
+        # if turn_sum > 35000:
+        #     print("hard tuning ---------------")
+        #     velocity.linear.x = 0
+        #     velocity.angular.z = 10    
+        if lineCentre < 0:
             print("cant see shit so go stright")
             velocity.linear.x = 1
         # goes through different options of turning
