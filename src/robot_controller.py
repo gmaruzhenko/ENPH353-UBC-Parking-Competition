@@ -42,12 +42,22 @@ class image_converter:
         self.publish.publish(velocity)
         if not self.drifted:
             velocity = Twist()
+            velocity.angular.z = 0
             velocity.linear.x = 10
             self.publish.publish(velocity)
-            rospy.sleep(.8)
+            print("forward")
+            rospy.sleep(.7)
             velocity.angular.z = 10
+            velocity.linear.x = 0
             self.publish.publish(velocity)
+            print("turn")
             rospy.sleep(.5)
+            velocity = Twist()
+            velocity.angular.z = 0
+            velocity.linear.x = 10
+            self.publish.publish(velocity)
+            print("forward")
+            rospy.sleep(.7)
             self.drifted = True
 
     # determineVelocity function calculate the velocity for the robot based
@@ -78,7 +88,7 @@ class image_converter:
         h, w = bw.shape[0:2]  # gets dimensions of image
         # cv2.imshow("cropped", bw)
         # cv2.waitKey(3)
-        imageCentre = 1200#1222
+        imageCentre = 1222-10
 
         turn_sum = 0 
         for x in range(w-1):
@@ -87,35 +97,46 @@ class image_converter:
         # finds where the line is on the bottom of the image
         left_x = -34  # random numbers that is supposed to be repalce with one when line is found
         right_x = -34
+        f_left_x = -34  # random numbers that is supposed to be repalce with one when line is found
+        f_right_x = -34
         for x in range(w-int(w/2)-1):
-            if (bw[h - 5*3, x+int(w/2)] > 0):
+            if (bw[h - 5*2, x+int(w/2)] > 0):
                 left_x = x+int(w/2)
                 break
+            if (bw[h - 5*5, x+int(w/2)] > 0):
+                f_left_x = x+int(w/2)
 
         for x in range(w-1):
-            if (bw[h - 5*3, w-x-1] > 0):
+            if (bw[h - 5*2, w-x-1] > 0):
                 right_x = w-x
+                
+            if (bw[h - 5*5, w-x-1] > 0):
+                f_right_x = w-x
                 break
 
         lineCentre = int(left_x+right_x)/2
+        f_lineCentre = int(f_left_x+f_right_x)/2
+
+        print(f_lineCentre)
+        print(lineCentre,"\n--------------------")
         # print(left_x , "left aaaaaaaaaaand Right" , right_x)
         lineBufferZone = 12
         straightZoneLeftBoundary = imageCentre - lineBufferZone
         straightZoneRightBoundary = imageCentre + lineBufferZone
         distance_error = abs(imageCentre - lineCentre)/imageCentre
         turn_multiplier = (1-distance_error)
-        
+        print
         velocity = Twist()
          # tokyo drift to outside in begining
         # if turn_sum > 35000:
         #     print("hard tuning ---------------")
         #     velocity.linear.x = 0
         #     velocity.angular.z = 10    
-        if lineCentre < 0:
+        if lineCentre < 0 or 2 < abs(f_lineCentre-lineCentre) < 5 :
             # print("cant see shit so go stright")
             velocity.linear.x = 1
         # goes through different options of turning
-        elif lineCentre < straightZoneLeftBoundary:
+        elif lineCentre < straightZoneLeftBoundary : #or abs(f_lineCentre-lineCentre)<2
             # turn right Cop
             # print("turning right")
             velocity.linear.x = 0
