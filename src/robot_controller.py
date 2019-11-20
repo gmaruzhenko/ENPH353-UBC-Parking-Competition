@@ -64,22 +64,6 @@ class image_converter:
     # on the position of the line in the image.   
     def determineVelocity(self, image):
         
-        # # Crop the image
-        # crop_img = image[60:120, 0:160]
-        # # Convert to grayscale
-        # gray = cv2.cvtColor(crop_img, cv2.COLOR_BGR2GRAY)
-        # # Gaussian blur
-        # blur = cv2.GaussianBlur(gray,(5,5),0)
-        # # Color thresholding
-        # ret,thresh = cv2.threshold(blur,60,255,cv2.THRESH_BINARY_INV)
-        # # Find the contours of the frame
-
-        # contours,hierarchy = cv2.findContours(thresh.copy(), 1, cv2.CHAIN_APPROX_NONE)
-
-        # cv2.imshow("cropped", contours)
-        # cv2.waitKey(3)
-        # print(hierarchy)
-        
         grayImage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         blurred = cv2.GaussianBlur(grayImage,(9, 9), 0)
         grayInverseImage = blurred
@@ -117,8 +101,8 @@ class image_converter:
         lineCentre = int(left_x+right_x)/2
         f_lineCentre = int(f_left_x+f_right_x)/2
 
-        print(f_lineCentre)
-        print(lineCentre,"\n--------------------")
+        # print(f_lineCentre)
+        # print(lineCentre,"\n--------------------")
         # print(left_x , "left aaaaaaaaaaand Right" , right_x)
         lineBufferZone = 12
         straightZoneLeftBoundary = imageCentre - lineBufferZone
