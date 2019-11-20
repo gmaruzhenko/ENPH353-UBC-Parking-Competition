@@ -88,7 +88,7 @@ class image_converter:
         h, w = bw.shape[0:2]  # gets dimensions of image
         # cv2.imshow("cropped", bw)
         # cv2.waitKey(3)
-        imageCentre = 1222-10
+        imageCentre = 1222-20
 
         turn_sum = 0 
         for x in range(w-1):
@@ -97,22 +97,22 @@ class image_converter:
         # finds where the line is on the bottom of the image
         left_x = -34  # random numbers that is supposed to be repalce with one when line is found
         right_x = -34
-        f_left_x = -34  # random numbers that is supposed to be repalce with one when line is found
+        f_left_x = -34 
         f_right_x = -34
+        
         for x in range(w-int(w/2)-1):
             if (bw[h - 5*2, x+int(w/2)] > 0):
                 left_x = x+int(w/2)
-                break
+                break #aproach from left toright of frame will always happen later ahead in bots perspective 
             if (bw[h - 5*5, x+int(w/2)] > 0):
                 f_left_x = x+int(w/2)
 
         for x in range(w-1):
             if (bw[h - 5*2, w-x-1] > 0):
                 right_x = w-x
-                
             if (bw[h - 5*5, w-x-1] > 0):
                 f_right_x = w-x
-                break
+                break #aproach from right to left of frame will always happen later ahead in bots perspective 
 
         lineCentre = int(left_x+right_x)/2
         f_lineCentre = int(f_left_x+f_right_x)/2
