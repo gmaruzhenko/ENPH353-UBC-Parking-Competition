@@ -30,6 +30,7 @@ class image_converter:
 
         self.publish = rospy.Publisher("/R1/cmd_vel", Twist, queue_size=1)
         self.drifted = False
+        self.crosswalk = False
 
     def callback(self, data):
         try:
@@ -69,17 +70,17 @@ class image_converter:
         ## convert to hsv
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
-        ## mask of green (36,0,0) ~ (70, 255,255)
+        ## mask of lower red 
         mask1 = cv2.inRange(hsv, (0,120,70), (10,255,255))
 
-        ## mask o yellow (15,0,0) ~ (36, 255, 255)
+        ## mask of upper red 
         mask2 = cv2.inRange(hsv, (15, 0, 0), (180,255,255))
 
         ## final mask and masked
         mask = cv2.bitwise_or(mask1, mask2)
         target = cv2.bitwise_and(image, image, mask=mask)
-        cv2.imshow("cropped", target)
-        cv2.waitKey(3)
+        # cv2.imshow("cropped", target)
+        # cv2.waitKey(3)
 
         
         grayImage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -90,7 +91,7 @@ class image_converter:
         h, w = bw.shape[0:2]  # gets dimensions of image
         # cv2.imshow("cropped", bw)
         # cv2.waitKey(3)
-        imageCentre = 1222-20
+        imageCentre = 1222-30
 
         turn_sum = 0 
         for x in range(w-1):
@@ -122,7 +123,7 @@ class image_converter:
         # print(f_lineCentre)
         # print(lineCentre,"\n--------------------")
         # print(left_x , "left aaaaaaaaaaand Right" , right_x)
-        lineBufferZone = 12
+        lineBufferZone = 12*2
         straightZoneLeftBoundary = imageCentre - lineBufferZone
         straightZoneRightBoundary = imageCentre + lineBufferZone
         distance_error = abs(imageCentre - lineCentre)/imageCentre
@@ -134,7 +135,7 @@ class image_converter:
         #     print("hard tuning ---------------")
         #     velocity.linear.x = 0
         #     velocity.angular.z = 10    
-        if lineCentre < 0 or 2 < abs(f_lineCentre-lineCentre) < 7 :
+        if lineCentre < 0 or 1 < abs(f_lineCentre-lineCentre) < 7 :
             # print("cant see shit so go stright")
             velocity.linear.x = 1
         # goes through different options of turning
