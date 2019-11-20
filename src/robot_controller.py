@@ -80,7 +80,7 @@ class image_converter:
         for x in range(w-1):
             turn_sum += bw[h-200, x]
         # print(turn_sum)
-        # finds where the line is on the bottom of the image
+        # finds where the line is on the bottom of the image and slightly ahead in the image 
         left_x = -34  # random numbers that is supposed to be repalce with one when line is found
         right_x = -34
         f_left_x = -34 
@@ -111,7 +111,7 @@ class image_converter:
         straightZoneRightBoundary = imageCentre + lineBufferZone
         distance_error = abs(imageCentre - lineCentre)/imageCentre
         turn_multiplier = (1-distance_error)
-        print
+        
         velocity = Twist()
          # tokyo drift to outside in begining
         # if turn_sum > 35000:
