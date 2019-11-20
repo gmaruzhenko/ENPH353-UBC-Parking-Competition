@@ -42,6 +42,17 @@ class image_converter:
         velocity = self.determineVelocity(cv_image)
         self.publish.publish(velocity)
 
+        if self.crosswalk:
+            # do safe driving
+            velocity = Twist()
+            velocity.angular.z = 0
+            velocity.linear.x = 10
+            self.publish.publish(velocity)
+            print("CHARGE")
+            rospy.sleep(2)
+            self.crosswalk = False
+
+
         #Get the bot on the outside of circuit driving CCW
         if not self.drifted:
             velocity = Twist()
