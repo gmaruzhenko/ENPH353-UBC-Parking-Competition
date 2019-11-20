@@ -83,23 +83,23 @@ class image_converter:
         turn_sum = 0 
         for x in range(w-1):
             turn_sum += bw[h-200, x]
-        print(turn_sum)
+        # print(turn_sum)
         # finds where the line is on the bottom of the image
         left_x = -34  # random numbers that is supposed to be repalce with one when line is found
         right_x = -34
         for x in range(w-int(w/2)-1):
-            if (bw[h - 5, x+int(w/2)] > 0):
+            if (bw[h - 50, x+int(w/2)] > 0):
                 left_x = x+int(w/2)
                 break
 
         for x in range(w-1):
-            if (bw[h - 5, w-x-1] > 0):
+            if (bw[h - 50, w-x-1] > 0):
                 right_x = w-x
                 break
 
         lineCentre = int(left_x+right_x)/2
         # print(left_x , "left aaaaaaaaaaand Right" , right_x)
-        lineBufferZone = 15
+        lineBufferZone = 12
         straightZoneLeftBoundary = imageCentre - lineBufferZone
         straightZoneRightBoundary = imageCentre + lineBufferZone
         
@@ -110,22 +110,22 @@ class image_converter:
         #     velocity.linear.x = 0
         #     velocity.angular.z = 10    
         if lineCentre < 0:
-            print("cant see shit so go stright")
+            # print("cant see shit so go stright")
             velocity.linear.x = 1
         # goes through different options of turning
         elif lineCentre < straightZoneLeftBoundary:
             # turn right Cop
-            print("turning right")
+            # print("turning right")
             velocity.linear.x = 0
             velocity.angular.z = 0.1
         elif lineCentre > straightZoneRightBoundary:
             # turn left
-            print("turning Left")
+            # print("turning Left")
             velocity.linear.x = 0
             velocity.angular.z = -0.1
         else:
             # go straight
-            print("straight")
+            # print("straight")
             velocity.linear.x = 0.1
             velocity.angular.z = 0
         return velocity
