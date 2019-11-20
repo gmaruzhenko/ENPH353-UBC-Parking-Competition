@@ -134,7 +134,7 @@ class image_converter:
         #     print("hard tuning ---------------")
         #     velocity.linear.x = 0
         #     velocity.angular.z = 10    
-        if lineCentre < 0 or 2 < abs(f_lineCentre-lineCentre) < 5 :
+        if lineCentre < 0 or 2 < abs(f_lineCentre-lineCentre) < 7 :
             # print("cant see shit so go stright")
             velocity.linear.x = 1
         # goes through different options of turning
