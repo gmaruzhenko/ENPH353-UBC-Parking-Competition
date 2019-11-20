@@ -66,21 +66,17 @@ class image_converter:
     # determineVelocity function calculate the velocity for the robot based
     # on the position of the line in the image.   
     def determineVelocity(self, image):
+        #https://stackoverflow.com/questions/51229126/how-to-find-the-red-color-regions-using-opencv
+        img_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+        ## Gen lower mask (0-5) and upper mask (175-180) of RED
+        mask1 = cv2.inRange(img_hsv, (0, 50, 20), (5, 255, 255))
+        mask2 = cv2.inRange(img_hsv, (175, 50, 20), (180, 255, 255))
 
-        ## convert to hsv
-        hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-
-        ## mask of lower red 
-        mask1 = cv2.inRange(hsv, (0,120,70), (10,255,255))
-
-        ## mask of upper red 
-        mask2 = cv2.inRange(hsv, (15, 0, 0), (180,255,255))
-
-        ## final mask and masked
+        ## Merge the mask and crop the red regions
         mask = cv2.bitwise_or(mask1, mask2)
-        target = cv2.bitwise_and(image, image, mask=mask)
-        # cv2.imshow("cropped", target)
-        # cv2.waitKey(3)
+
+        cv2.imshow("cropped", mask)
+        cv2.waitKey(3)
 
         
         grayImage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
