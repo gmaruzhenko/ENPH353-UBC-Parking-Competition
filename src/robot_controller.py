@@ -65,6 +65,22 @@ class image_converter:
     # determineVelocity function calculate the velocity for the robot based
     # on the position of the line in the image.   
     def determineVelocity(self, image):
+
+        ## convert to hsv
+        hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+
+        ## mask of green (36,0,0) ~ (70, 255,255)
+        mask1 = cv2.inRange(hsv, (0,120,70), (10,255,255))
+
+        ## mask o yellow (15,0,0) ~ (36, 255, 255)
+        mask2 = cv2.inRange(hsv, (15, 0, 0), (180,255,255))
+
+        ## final mask and masked
+        mask = cv2.bitwise_or(mask1, mask2)
+        target = cv2.bitwise_and(image, image, mask=mask)
+        cv2.imshow("cropped", target)
+        cv2.waitKey(3)
+
         
         grayImage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         blurred = cv2.GaussianBlur(grayImage,(9, 9), 0)
