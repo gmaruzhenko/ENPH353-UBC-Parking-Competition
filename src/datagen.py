@@ -1,11 +1,14 @@
+#!/usr/bin/env python
 from __future__ import print_function
 
 import roslib
 # roslib.load_manifest('enph353_ros_lab')
 import sys
 import glob
+import numpy as np
 import rospy
 import cv2
+import csv
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
@@ -32,8 +35,13 @@ class image_converter:
             print(e)
 
         #TODO FIND CORRECT LICENCE PLATE
-        print(glob.glob("home/"))
-
+        # csv_data = np.genfromtxt('/home/gosha/Code/comp_ws/src/2019F_competition_student/enph353/enph353_gazebo/scripts/plates.csv',delimiter='\n')
+        # print(csv_data)
+        with open('/home/gosha/Code/comp_ws/src/2019F_competition_student/enph353/enph353_gazebo/scripts/plates.csv', 'rb') as csvfile:
+            data = list(csv.reader(csvfile))
+        label = '/home/gosha/Code/comp_ws/dataset/'+data[1][0]+'.png'
+        # print(data[1])
+        cv2.imwrite(label,cv_image)
 
 
     # determineVelocity function calculate the velocity for the robot based

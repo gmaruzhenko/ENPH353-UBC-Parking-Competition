@@ -1,5 +1,5 @@
 
 <launch>
-    <node name="my_control" type="robot_controller.py" pkg="robot_control"  output="screen"/>
-    <!--<node name="license_plate_reader" pkg="image_classifier.py"/>-->
+    <!-- <node name="my_control" type="robot_controller.py" pkg="robot_control"  output="screen"/> -->
+    <node name="datagen" type="datagen.py" pkg="robot_control"  output="screen"/>
 </launch>
