@@ -32,6 +32,7 @@ class image_converter:
             print(e)
 
         #TODO FIND CORRECT LICENCE PLATE
+        print(glob.glob("home/"))
 
 
 
