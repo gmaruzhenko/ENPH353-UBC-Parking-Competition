@@ -4,6 +4,7 @@ from __future__ import print_function
 import roslib
 # roslib.load_manifest('enph353_ros_lab')
 import sys
+import time
 import glob
 import numpy as np
 import rospy
@@ -26,6 +27,8 @@ class image_converter:
         self.image_sub = rospy.Subscriber("/R1/pi_camera/image_raw", Image, self.callback)
 
         self.publish = rospy.Publisher("/R1/cmd_vel", Twist, queue_size=1)
+        self.rotate = 0
+        self.direction = True
 
 
     def callback(self, data):
@@ -39,9 +42,28 @@ class image_converter:
         # print(csv_data)
         with open('/home/gosha/Code/comp_ws/src/2019F_competition_student/enph353/enph353_gazebo/scripts/plates.csv', 'rb') as csvfile:
             data = list(csv.reader(csvfile))
-        label = '/home/gosha/Code/comp_ws/dataset/'+data[1][0]+'.png'
+        label = '/home/gosha/Code/comp_ws/dataset/'+str(time.time())+'@'+data[1][0]+'.png'
         # print(data[1])
         cv2.imwrite(label,cv_image)
+        # rospy.sleep(0.05)
+        #rotate a hair and repeat 
+        velocity = Twist()
+        #roatate in a deiretion within a certain angle
+        if self.direction:
+            velocity.angular.z = 0.1
+        else:
+            velocity.angular.z = -0.1
+        velocity.linear.x = 0
+        self.publish.publish(velocity)
+        self.rotate += 1
+        
+        rospy.sleep(0.01)
+
+        velocity.angular.z = 0
+        self.publish.publish(velocity)
+
+        rospy.sleep(0.1)
+
 
 
     # determineVelocity function calculate the velocity for the robot based
