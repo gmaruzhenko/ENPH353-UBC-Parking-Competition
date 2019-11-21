@@ -50,9 +50,9 @@ class image_converter:
         velocity = Twist()
         #roatate in a deiretion within a certain angle
         if self.direction:
-            velocity.angular.z = 0.1
-        else:
             velocity.angular.z = -0.1
+        else:
+            velocity.angular.z = 0.1
         velocity.linear.x = 0
         self.publish.publish(velocity)
         self.rotate += 1
