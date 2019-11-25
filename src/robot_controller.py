@@ -42,7 +42,7 @@ class image_converter:
         # Gets the velocity message from the determineVelocity function
         velocity = self.determineVelocity(cv_image)
         self.publish.publish(velocity)
-        rospy.sleep(0.01)
+        rospy.sleep(0.03)
 
         velocity = Twist()
         velocity.angular.z = 0
@@ -173,9 +173,9 @@ class image_converter:
         elif self.crosswalk:
             velocity.linear.x = 10
             velocity.angular.z = 0
-        elif lineCentre < 0 or 1 < abs(f_lineCentre-lineCentre) < 7 :
-            # print("cant see shit so go stright")
-            velocity.linear.x = 1
+        # elif lineCentre < 0 or 1 < abs(f_lineCentre-lineCentre) < 7 :
+        #     # print("cant see shit so go stright")
+        #     velocity.linear.x = 1
         # goes through different options of turning
         elif lineCentre < straightZoneLeftBoundary : #or abs(f_lineCentre-lineCentre)<2
             # turn right Cop
