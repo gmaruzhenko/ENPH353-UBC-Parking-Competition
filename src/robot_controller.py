@@ -42,6 +42,13 @@ class image_converter:
         # Gets the velocity message from the determineVelocity function
         velocity = self.determineVelocity(cv_image)
         self.publish.publish(velocity)
+        rospy.sleep(0.01)
+
+        velocity = Twist()
+        velocity.angular.z = 0
+        velocity.linear.x = 0
+        self.publish.publish(velocity)
+        rospy.sleep(0.02)
 
         if self.second_red:
             velocity = Twist()
@@ -74,18 +81,18 @@ class image_converter:
             velocity.linear.x = 10
             self.publish.publish(velocity)
             print("forward")
-            rospy.sleep(.7)
+            rospy.sleep(1.2)
             velocity.angular.z = 10
             velocity.linear.x = 0
             self.publish.publish(velocity)
             print("turn")
-            rospy.sleep(.5)
+            rospy.sleep(.9)
             velocity = Twist()
             velocity.angular.z = 0
             velocity.linear.x = 10
             self.publish.publish(velocity)
             print("forward")
-            rospy.sleep(.3)
+            rospy.sleep(.1)
             self.drifted = True
 
     # determineVelocity function calculate the velocity for the robot based
@@ -112,7 +119,7 @@ class image_converter:
         h, w = bw.shape[0:2]  # gets dimensions of image
         # cv2.imshow("cropped", bw)
         # cv2.waitKey(3)
-        imageCentre = 1222-30
+        imageCentre = 1222-30/2
 
         red_sum = 0 
         for x in range(w-1):
@@ -145,7 +152,7 @@ class image_converter:
         # print(f_lineCentre)
         # print(lineCentre,"\n--------------------")
         # print(left_x , "left aaaaaaaaaaand Right" , right_x)
-        lineBufferZone = 12
+        lineBufferZone = 12*2
         straightZoneLeftBoundary = imageCentre - lineBufferZone
         straightZoneRightBoundary = imageCentre + lineBufferZone
         distance_error = abs(imageCentre - lineCentre)/imageCentre
