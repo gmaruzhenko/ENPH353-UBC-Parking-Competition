@@ -48,16 +48,16 @@ class image_converter:
         velocity.angular.z = 0
         velocity.linear.x = 0
         self.publish.publish(velocity)
-        rospy.sleep(0.02)
+        rospy.sleep(0.003)
 
-        if self.second_red:
-            velocity = Twist()
-            velocity.angular.z = 0
-            velocity.linear.x = 10
-            self.publish.publish(velocity)
-            print("CHsecond redARGE")
-            rospy.sleep(0.5)
-            self.second_red = False
+        # if self.second_red:
+        #     velocity = Twist()
+        #     velocity.angular.z = 0
+        #     velocity.linear.x = 10
+        #     self.publish.publish(velocity)
+        #     print("CHsecond redARGE")
+        #     rospy.sleep(0.5)
+        #     self.second_red = False
 
         if self.crosswalk:
             # do safe driving
@@ -65,7 +65,7 @@ class image_converter:
             velocity.angular.z = 0
             velocity.linear.x = 0
             self.publish.publish(velocity)
-            rospy.sleep(4)
+            # rospy.sleep(4)
             velocity.angular.z = 0
             velocity.linear.x = 10
             self.publish.publish(velocity)
