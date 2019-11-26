@@ -65,12 +65,13 @@ class image_converter:
             velocity.angular.z = 0
             velocity.linear.x = 0
             self.publish.publish(velocity)
-            # rospy.sleep(4)
+            rospy.sleep(99999999)
             velocity.angular.z = 0
             velocity.linear.x = 10
             self.publish.publish(velocity)
             print("CHARGE")
-            rospy.sleep(2)
+            rospy.sleep(2.3)
+            self.crosswalk = False 
             
 
 
