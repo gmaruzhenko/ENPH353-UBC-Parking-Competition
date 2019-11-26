@@ -57,12 +57,12 @@ class image_converter:
         self.publish.publish(velocity)
         self.rotate += 1
         
-        rospy.sleep(0.01)
+        rospy.sleep(0.5)
 
         velocity.angular.z = 0
         self.publish.publish(velocity)
 
-        rospy.sleep(0.1)
+        #rospy.sleep(0.1)
 
 
 
