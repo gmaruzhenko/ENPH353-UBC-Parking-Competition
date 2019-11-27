@@ -147,7 +147,7 @@ class image_converter:
                 f_right_x = w-x
                 break #aproach from right to left of frame will always happen later ahead in bots perspective 
 
-        lineCentre = int(left_x+right_x)/2
+        lineCentre = right_x+10#int(left_x+right_x)/2
         f_lineCentre = int(f_left_x+f_right_x)/2
 
         # print(f_lineCentre)
